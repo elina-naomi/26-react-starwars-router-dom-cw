@@ -22,17 +22,16 @@ class Home extends React.Component {
             existHero = false;
         }
         this.setState({existHero, hero});
+        this.props.changeHero(hero);
     }
 
     componentDidMount() {
         this.getHero();
-        this.props.changeHero(this.state.hero);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.hero !== prevProps.match.params.hero){
             this.getHero();
-            this.props.changeHero(this.state.hero);
         }
     }
 
